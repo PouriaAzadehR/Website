@@ -51,11 +51,26 @@ The Application Layer is topmost layer in the Open System Interconnection (OSI) 
 usually working with these protocols is not so easy therefore an interface is use which its name is API ( application programm interface)
 
 ### API
-api and stateful stateless??? http? 7 layer nemoodar exchaning information
 
-I have chosen Service Oriented Architecture for my project architecture
+#### STATEFULL VS STATELESS
 
-### SOA
+imangine servers are like doctors and clieans are patients 
+if you just go to one doctor it is neaded to intoduce yourself to doctor just once and after that you are saved in doctor mind and whenever you go to him its not essential to introduce your self to him(stateful)
+but if doctor changed all the sates will fucked up and now you should all the staffs again
+but if you use a state transfer model means a model which transfer all the staff with it self needed no state to be saved it doesnt matter for you changing of doctor because you always transfer your state
+maybe speed of state transfer  is less than  others one because each time you need transfer all the states and do the same stuffs in server side but on the other hand it is statelss and if we want to have horizental expandemnt
+it wont stop
+
+##### REST api ( Representational state transfer)
+
+ in above example state transfer means it will transfer all of its state on its own.
+ this kind of api uses http therefore it is statelss
+
+### Project Architecture
+ MVC ( Model , View , Controller) is chosen project architecure in order to seperate back and front and use the best of  REST api's.
+SOA architecutre is chosen for backEnd side.
+
+#### SOA
 Service-oriented architecture (SOA) is a type of software design that makes software components reusable using service interfaces that use a common communication language over a network. 
 
 A service is a self-contained unit of software functionality, or set of functionalities, designed to complete a specific task such as retrieving specified information or executing an operation. It contains the code and data integrations necessary to carry out a complete, discrete business function and can be accessed remotely and interacted with or updated independently.
@@ -63,6 +78,16 @@ A service is a self-contained unit of software functionality, or set of function
 In other words, SOA integrates software components that have been separately deployed and maintained and allows them to communicate and work together to form software applications across different systems.
 
 In this project a message broker is used in order to separate requests between various services.
+
+##### Message Broker
+
+message brokers is used for comminucation of  services asynchronously .
+By message brokers we decoupled our services.
+In the case of OTP  because we need to use it a lot 
+We design a server to connect to it and we just put data on que to be sent to that server and after that by using kaveh negar api( this api is used for sending sms) it sends its messages
+We could design it by directly call kaveh negar rest api and using async i/o in order not to block thread .
+But in this way if because of any reason like being offline kaveh negar or being busy kaveh negar we wont miss any request on the other hand we release the presure from our service to another service and we are using microservice architecture
+
 
 #### NATS
 NATS is an open-source, cloud-native, high-performance messaging system. At its core, it’s a Publish/Subscribe (PubSub) system whereby clients can communicate with one another without knowledge of where services are located or what their precise endpoints are. Clients simply publish/subscribe to a subject and NATS takes full responsibility for routing the messages.
