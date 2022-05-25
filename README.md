@@ -67,7 +67,11 @@ it wont stop
  this kind of api uses http therefore it is statelss
 
 ### Project Architecture
- MVC ( Model , View , Controller) is chosen project architecure in order to seperate back and front and use the best of  REST api's.
+
+![MVC](https://user-images.githubusercontent.com/93463377/170369850-0bba6dc6-499c-4edf-8dd6-289c8a6c887a.png)
+
+MVC ( Model , View , Controller) is chosen project architecure in order to seperate back and front and use the best of  REST api's.
+
 SOA architecutre is chosen for backEnd side.
 
 #### SOA
@@ -88,6 +92,7 @@ We design a server to connect to it and we just put data on que to be sent to th
 We could design it by directly call kaveh negar rest api and using async i/o in order not to block thread .
 But in this way if because of any reason like being offline kaveh negar or being busy kaveh negar we wont miss any request on the other hand we release the presure from our service to another service and we are using microservice architecture
 
+![nats](https://user-images.githubusercontent.com/93463377/170369686-006d074a-0461-4679-b627-adab73bfccc9.png)
 
 #### NATS
 NATS is an open-source, cloud-native, high-performance messaging system. At its core, it’s a Publish/Subscribe (PubSub) system whereby clients can communicate with one another without knowledge of where services are located or what their precise endpoints are. Clients simply publish/subscribe to a subject and NATS takes full responsibility for routing the messages.
