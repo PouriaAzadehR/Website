@@ -1,0 +1,12 @@
+Django==3.2.2
+logutils==0.3.5
+psycopg2==2.8.6
+python-dotenv==0.17.1
+djangorestframework==3.12.4
+Pillow==8.2.0
+asyncio-nats-streaming==0.4.0
+django-redis==4.12.1
+PyJWT==2.1.0
+django-tinymce==3.3.0
+argon2-cffi==21.1.0
+python-magic==0.4.24
