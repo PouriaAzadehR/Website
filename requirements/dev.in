@@ -1,0 +1,5 @@
+django-debug-toolbar==3.2.1
+pip-tools==6.6.0
+black==21.5b1
+isort==5.8.0
+django-extensions==3.1.5
