@@ -5,4 +5,4 @@ from src.apps.storage.models import PublicMediaModel
 
 @admin.register(PublicMediaModel)
 class PublicMediaModelAdmin(admin.ModelAdmin):
-    pass
+    pass # just for registriation
