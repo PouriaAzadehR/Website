@@ -102,6 +102,26 @@ Where NATS provides at most once quality of service, streaming adds at least onc
 
 In other words, Nats Streaming introduces message persistence & message delivery guarantees.
 
+## Project Architecture
+
+![mvc](https://user-images.githubusercontent.com/93463377/176638069-18a3ec17-40b1-4b13-a06c-3e5097657f0b.jpg)
+
+
+MVC ( Model , View , Controller) is chosen project architecure in order to seperate back and front and use the best of  REST api's.
+
+SOA architecutre is chosen for backEnd side.
+
+#### SOA
+
+Service-oriented architecture (SOA) is a type of software design that makes software components reusable using service interfaces that use a common communication language over a network. 
+
+A service is a self-contained unit of software functionality, or set of functionalities, designed to complete a specific task such as retrieving specified information or executing an operation. It contains the code and data integrations necessary to carry out a complete, discrete business function and can be accessed remotely and interacted with or updated independently.
+
+In other words, SOA integrates software components that have been separately deployed and maintained and allows them to communicate and work together to form software applications across different systems.
+
+In this project a message broker is used in order to separate requests between various services.
+
+
 
 ## OSI MODEL
 
@@ -182,25 +202,6 @@ it wont stop
 
  in above example state transfer means it will transfer all of its state on its own.
  this kind of api uses http therefore it is statelss
-
-## Project Architecture
-
-![MVC](https://user-images.githubusercontent.com/93463377/170369850-0bba6dc6-499c-4edf-8dd6-289c8a6c887a.png)
-
-MVC ( Model , View , Controller) is chosen project architecure in order to seperate back and front and use the best of  REST api's.
-
-SOA architecutre is chosen for backEnd side.
-
-#### SOA
-
-Service-oriented architecture (SOA) is a type of software design that makes software components reusable using service interfaces that use a common communication language over a network. 
-
-A service is a self-contained unit of software functionality, or set of functionalities, designed to complete a specific task such as retrieving specified information or executing an operation. It contains the code and data integrations necessary to carry out a complete, discrete business function and can be accessed remotely and interacted with or updated independently.
-
-In other words, SOA integrates software components that have been separately deployed and maintained and allows them to communicate and work together to form software applications across different systems.
-
-In this project a message broker is used in order to separate requests between various services.
-
 
 
 ## SWAGGER 
