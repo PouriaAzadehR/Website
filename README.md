@@ -1,8 +1,11 @@
 # WEB DEVELOPMENT
 This djangoProject is about important concepts of  web development. 
 
-all designing procedures , technologies , architectures , 
-protocols and frameworks that will be used in this project are going to be explained in details.
+all designing procedures , technologies and architectures 
+that will be used in this project are going to be explained in details.
+
+![web-development](https://user-images.githubusercontent.com/93463377/176633242-90666a16-4e4a-4fc7-a936-018e205eb032.jpg)
+
 
 ## University Sport Club
 This project is designed for website  of a  university sport club.
@@ -34,7 +37,71 @@ This project is designed for website  of a  university sport club.
 
 -----------------------------------------------------------------------------------------------------------------------
 
+
+
 # Concepts And Architectures
+
+## Elastic Search
+
+![elk](https://user-images.githubusercontent.com/93463377/176637018-d383b6a8-3aa5-45d8-8beb-a6631967b441.png)
+
+elastic search is a database which is like no sql databases (document based => jason)
+its archictecture is consist of cluster => nodes =>shards <= indices
+index => database
+type => table
+document => row
+field => column
+each index can be spread  horizontally in shards each shard is a Lucene index which is the core of story
+elastic search is relied on Lucene index  and elastic search just create a powerful architeture to use Lucene index
+ we have two kinds of shards replica and primary 
+replica is the replacment for primary one in case of emergency 
+each node contains numbers of shards
+
+approaches
+
+1- one index with many types => even one shard is sufficient 
+
+2- many index with just one type => it needs more shard to proccess the resault
+
+Another important factor is how you plan to search your data. While each shard is searched independently, Elasticsearch eventually needs to merge results from all the searched shards. For instance if you search across 10 indices that have 5 shards each, the node that coordinates the execution of a search request will need to merge 5x10=50 shard results. Here again you need to be careful: if there are too many shard results to merge and/or if you ran an heavy request that produces large shard responses (which can easily happen with aggregations), the task of merging all these shard results can become very resource-intensive, both in terms of CPU and memory. Again this would advocate for having fewer indices.
+
+to wrap it all you should realize the conditions and needs of your project in order to understand which one should be used
+
+### Types of indexing (INVERTED and FORWARDED indexing )
+
+as you see up , in case of indexed documents we have two things
+an index file(dictionary of words which is used for index) and list of documents
+we have two approach to work with this files
+
+1- if we know our document we easily choose it from our document list and the dictionary just give us more information about documents => forward indexing 
+
+2-we dont know our documents and we use dictionary of words in order to find the documents(searching) =>invert indexing
+
+Example: Your cell phone
+The forward index in your cell phone is your list of contacts, and which phone numbers (cell, home, work) are associated with those contacts. The inverted index is what allows you to manually enter a phone number, and when you hit "dial" you see the person's name, rather than the number, because your phone has taken the phone number and found you the contact associated with it.
+
+
+## Message Broker
+
+message brokers is used for comminucation of  services asynchronously .
+By message brokers we decoupled our services.
+In the case of OTP  because we need to use it a lot 
+We design a server to connect to it and we just put data on que to be sent to that server and after that by using kaveh negar api( this api is used for sending sms) it sends its messages
+We could design it by directly call kaveh negar rest api and using async i/o in order not to block thread .
+But in this way if because of any reason like being offline kaveh negar or being busy kaveh negar we wont miss any request on the other hand we release the presure from our service to another service and we are using microservice architecture
+
+![nats](https://user-images.githubusercontent.com/93463377/170369686-006d074a-0461-4679-b627-adab73bfccc9.png)
+
+#### NATS
+
+NATS is an open-source, cloud-native, high-performance messaging system. At its core, it’s a Publish/Subscribe (PubSub) system whereby clients can communicate with one another without knowledge of where services are located or what their precise endpoints are. Clients simply publish/subscribe to a subject and NATS takes full responsibility for routing the messages.
+
+#### NATS STREAMING
+
+Where NATS provides at most once quality of service, streaming adds at least once. Streaming is implemented as a request-reply service on top of NATS.
+
+In other words, Nats Streaming introduces message persistence & message delivery guarantees.
+
 
 ## OSI MODEL
 
@@ -134,26 +201,6 @@ In other words, SOA integrates software components that have been separately dep
 
 In this project a message broker is used in order to separate requests between various services.
 
-## Message Broker
-
-message brokers is used for comminucation of  services asynchronously .
-By message brokers we decoupled our services.
-In the case of OTP  because we need to use it a lot 
-We design a server to connect to it and we just put data on que to be sent to that server and after that by using kaveh negar api( this api is used for sending sms) it sends its messages
-We could design it by directly call kaveh negar rest api and using async i/o in order not to block thread .
-But in this way if because of any reason like being offline kaveh negar or being busy kaveh negar we wont miss any request on the other hand we release the presure from our service to another service and we are using microservice architecture
-
-![nats](https://user-images.githubusercontent.com/93463377/170369686-006d074a-0461-4679-b627-adab73bfccc9.png)
-
-#### NATS
-
-NATS is an open-source, cloud-native, high-performance messaging system. At its core, it’s a Publish/Subscribe (PubSub) system whereby clients can communicate with one another without knowledge of where services are located or what their precise endpoints are. Clients simply publish/subscribe to a subject and NATS takes full responsibility for routing the messages.
-
-#### NATS STREAMING
-
-Where NATS provides at most once quality of service, streaming adds at least once. Streaming is implemented as a request-reply service on top of NATS.
-
-In other words, Nats Streaming introduces message persistence & message delivery guarantees.
 
 
 ## SWAGGER 
