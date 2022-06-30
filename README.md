@@ -7,8 +7,29 @@ protocols and frameworks that will be used in this project are going to be expla
 ## University Sport Club
 This project is designed for website  of a  university sport club.
 
+### Features
+
+:heavy_check_mark: REST api
+
+:heavy_check_mark: Elastic Search for event filtering and searching
+
+:heavy_check_mark: Postgres Database
+
+:heavy_check_mark: Complete Adming Panel
+
+:heavy_check_mark: suitable reservation system based on calender
+
+:heavy_check_mark: OTP for Authorization
+
+:heavy_check_mark: Push notification
+
+:heavy_check_mark: Message Broker for SOA architecture( in OTP and push notification)
+
+
+
 ### ERD
 ![sutpe erd](https://user-images.githubusercontent.com/93463377/170370642-05b6cee4-92cc-4147-8a8c-d400228b335e.PNG)
+
 
 
 -----------------------------------------------------------------------------------------------------------------------
