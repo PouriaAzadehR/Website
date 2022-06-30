@@ -104,7 +104,7 @@ In other words, Nats Streaming introduces message persistence & message delivery
 
 ## Project Architecture
 
-![mvc](https://user-images.githubusercontent.com/93463377/176638069-18a3ec17-40b1-4b13-a06c-3e5097657f0b.jpg)
+![images](https://user-images.githubusercontent.com/93463377/176638557-8d4f82b4-0408-4b63-acc4-9e9acd03c834.png)
 
 
 MVC ( Model , View , Controller) is chosen project architecure in order to seperate back and front and use the best of  REST api's.
