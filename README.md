@@ -210,3 +210,34 @@ sawgger is the implementaion of open api (open api is a specification)
 It is a IDL(interface definition  language) that is used to completly define a restful api 
 You can use YAML JASON  to deifne api
 
+
+
+## Django Media
+an app for storing media in Django
+this app can help you for saving meida like pictures in any django app
+it contains all staff that it needs and you can easily install this app on your project and use it
+##this is an example use of this app for saving an avatar
+ 
+### model
+avatar = models.ForeignKey(
+       "storage.MediaModel",
+       blank=True,
+       null=True,
+       on_delete=models.SET_NULL,
+       related_name="user",
+   )
+### serializer
+ avatar = serializers.SerializerMethodField()
+### Meta class
+class Meta:
+        model = User
+        fields = {
+            "avatar",
+            }
+#### In this way of using serializers we prevent from circular import because we define a service in storage app that is responsible for serializing it          
+def get_avatar(self, obj):
+        if obj.avatar is None:
+            return None
+        avatar_id = obj.avatar.id
+        data = serialize_media_by_id(media_id=avatar_id)
+        return data
