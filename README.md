@@ -219,23 +219,23 @@ it contains all staff that it needs and you can easily install this app on your 
 ##this is an example use of this app for saving an avatar
  
 ### model
-avatar = models.ForeignKey(
+    avatar = models.ForeignKey(
        "storage.MediaModel",
        blank=True,
        null=True,
        on_delete=models.SET_NULL,
        related_name="user",
-   )
+    )
 ### serializer
- avatar = serializers.SerializerMethodField()
+    avatar = serializers.SerializerMethodField()
 ### Meta class
-class Meta:
+    class Meta:
         model = User
         fields = {
             "avatar",
             }
 #### In this way of using serializers we prevent from circular import because we define a service in storage app that is responsible for serializing it          
-def get_avatar(self, obj):
+    def get_avatar(self, obj):
         if obj.avatar is None:
             return None
         avatar_id = obj.avatar.id
